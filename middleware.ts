@@ -20,7 +20,8 @@ export function middleware(req: NextRequest) {
     style-src 'self' 'unsafe-inline' https:;
     img-src 'self' data: blob:;
     font-src 'self' https://fonts.gstatic.com;
-    connect-src 'self' https:;
+    connect-src 'self' https: https://weebtest.netlify.app;
+
   `.replace(/\s{2,}/g, " ").trim()
 )
 
