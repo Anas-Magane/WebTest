@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect, Suspense } from "react"
-import { useSearchParams, usePathname } from "next/navigation"
+
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -25,8 +25,6 @@ function sanitizeInput(input: string): string {
     .trim()
 }
 
-const allowedServices = ["Secure Development Service", "Pentest Service"]
-
 
 // Email validation regex
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
@@ -46,19 +44,7 @@ function ContactForm({ defaultSubject = "" }: { defaultSubject?: string }) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
 
-  
-const pathname = usePathname()
-const searchParams = useSearchParams()
-
-useEffect(() => {
-  const service = searchParams.get("service")
-  if (service && allowedServices.includes(service)) {
-    setFormData((prev) => ({
-      ...prev,
-      subject: service,
-    }))
-  }
-}, [pathname, searchParams])
+ 
 
 
 
